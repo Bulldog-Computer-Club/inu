@@ -1,0 +1,9 @@
+[tool.poetry]
+name = "inu"
+version = "0.1.0"
+description = "A Discord bot for the Bulldog Computer Club."
+authors = ["Bulldog Computer Club"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
