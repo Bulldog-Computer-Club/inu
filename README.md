@@ -50,7 +50,7 @@ Thank you for considering contributing to Inu; bug-fixes and new features are al
 
 ## Development Tools
 
-[Black](https://github.com/psf/black) is used for code formatting and [flake-8](https://flake8.pycqa.org/en/latest/) for style enforcement. Having these tools and relevant editor integrations installed will be a major boon for development.
+[Black](https://github.com/psf/black) is used for code formatting and [Flake8](https://flake8.pycqa.org/en/latest/) for style enforcement. Having these tools and relevant editor integrations installed will be a major boon for development.
 
 # License
 
