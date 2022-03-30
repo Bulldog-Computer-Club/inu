@@ -2,31 +2,31 @@
 
 > A Discord bot for the Bulldog Computer Club using [discord.py](https://github.com/Rapptz/discord.py).
 
-# Installation
+## Installation
 
 1. Clone the repository locally:
-   ```sh
+   ```bash
    $ git clone https://github.com/Bulldog-Computer-Club/inu
    ```
 2. Navigate to the newly created folder:
-   ```sh
+   ```bash
    $ cd inu
    ```
 3. Copy `.env.example` to `.env` and fill it out with the necessary configuration values.
 
 After this, there are two possibilities:
 
-## Running standalone
+### Running standalone
 
 > **Note:** Running standalone requires more work in general, but is beneficial for fast iteration when developing.
 
 1. Set up [Poetry](https://python-poetry.org/), which is used for package management and build control.
 2. Install all dependencies:
-   ```sh
+   ```bash
    $ poetry install
    ```
 3. Run the `bot.py` file:
-   ```sh
+   ```bash
    $ poetry run python bot.py
    ```
 
@@ -36,7 +36,7 @@ After this, there are two possibilities:
 
 1. Ensure that [Docker](https://www.docker.com/) is installed on your system.
 2. Use Compose to start the bot service:
-   ```sh
+   ```bash
    $ docker-compose up
    # or, if developing
    $ docker-compose up --build bot
@@ -44,14 +44,14 @@ After this, there are two possibilities:
 
 If developing, it is recommended to comment out the restart policy in the Compose file.
 
-# Contributing
+## Contributing
 
 Thank you for considering contributing to Inu; bug-fixes and new features are always appreciated. If working on a major feature, it may be prudent to open an issue to discuss design and implementation prior to diving in to avoid any surprises down the line.
 
-## Development Tools
+### Development Tools
 
 [Black](https://github.com/psf/black) is used for code formatting and [Flake8](https://flake8.pycqa.org/en/latest/) for style enforcement. Having these tools and relevant editor integrations installed will be a major boon for development.
 
-# License
+## License
 
-Inu is licensed under the MIT. It is maintained by the organizers of the Bulldog Computer Club, with help from club members.
+Inu is licensed under the MIT license. It is maintained by the organizers of the Bulldog Computer Club, with help from club members.
