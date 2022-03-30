@@ -6,4 +6,11 @@
 .mypy_cache
 .venv
 
+.env.example
 .env
+
+LICENSE
+README.md
+
+.git
+.gitignore
