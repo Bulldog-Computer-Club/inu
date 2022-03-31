@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request
+
+jobs:
+  run-pyright:
+    name: Run Pyright
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run Pyright
+        uses: jakebailey/pyright-action@v1
+
+  run-black:
+    name: Run Black
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
+      - name: Run Black
+        uses: psf/black@stable
+
+  run-flake8:
+    name: Run Flake8
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+
+      - name: Run Flake8
+        uses: TrueBrain/actions-flake8@v2
