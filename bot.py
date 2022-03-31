@@ -12,6 +12,13 @@ token = os.getenv("DISCORD_TOKEN")
 async def on_ready():
     print(f"Successfully logged in as {client.user}")
 
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
+
+    print(message)
+
 if __name__ == "__main__":
     if not token:
         print("required environmental variable DISCORD_TOKEN not set")
