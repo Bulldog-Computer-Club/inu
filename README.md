@@ -30,11 +30,6 @@ After this, there are two possibilities:
    $ poetry run python bot.py
    ```
 
-Alternatively, it is possible to install the necessary dependencies through pip using the provided requirements.txt file:
-```
-$ pip install -r requirements.txt
-```
-
 ## Running via Docker
 
 > **Note:** Running via Docker is recommended for production instances, but may have a relatively low start-up speed compared to running standalone.
