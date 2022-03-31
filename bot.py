@@ -25,7 +25,11 @@ async def on_ready():
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--token", help="specify a Discord bot token")
+    parser.add_argument("--debug", help="set the debug loglevel", action="store_true")
     args = parser.parse_args()
+    if args.debug:
+        logging.getLogger().setLevel(logging.DEBUG)
+
     token: Optional[str] = args.token or os.getenv("DISCORD_TOKEN")
     if not token:
         logging.error("no token specified, use --token or set DISCORD_TOKEN")
