@@ -22,10 +22,10 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--token", help="specify a Discord bot token")
     args = parser.parse_args()
-    if not token:
+    if args.token not None:
         token = args.token
-        if not token:
-            logging.error("no token specified, use --token or set DISCORD_TOKEN")
-            sys.exit(1)
+    if not token:
+        logging.error("no token specified, use --token or set DISCORD_TOKEN")
+        sys.exit(1)
 
     client.run(token)
