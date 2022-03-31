@@ -18,13 +18,6 @@ logging.basicConfig(format="%(asctime)s [%(levelname)s]: %(message)s", level=log
 async def on_ready():
     logging.info(f"successfully logged in as {client.user}")
 
-@client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
-
-    print(message)
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--token", help="specify a Discord bot token")
