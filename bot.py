@@ -3,6 +3,7 @@
 import os
 import sys
 import argparse
+import logging
 
 import discord
 import dotenv
@@ -10,6 +11,8 @@ import dotenv
 dotenv.load_dotenv()
 client = discord.Client()
 token = os.getenv("DISCORD_TOKEN")
+
+logging.basicConfig(format="%(asctime)s [%(levelname)s]: %(message)s")
 
 @client.event
 async def on_ready():
@@ -21,7 +24,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     token = args.token
     if not token:
-        print("no token specified, use --token or set DISCORD_TOKEN")
+        logging.error("no token specified, use --token or set DISCORD_TOKEN")
         sys.exit(1)
 
     client.run(token)
