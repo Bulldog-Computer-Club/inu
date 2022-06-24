@@ -1,41 +1,39 @@
 #!/usr/bin/env python3
 
 import argparse
+import asyncio
 import logging
 import os
-from pydoc import cli
 import sys
 from typing import Optional
-from cogs.demo import Demo
 
 import discord
 import dotenv
 from discord.ext import commands
 
 dotenv.load_dotenv()
-client = commands.Bot(command_prefix='!')
 
 logging.basicConfig(
     format="%(asctime)s [%(levelname)s]: %(message)s", level=logging.INFO
 )
 
+bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
-@client.event
+
+@bot.event
 async def on_ready():
-    logging.info(f"successfully logged in as {client.user}")
+    logging.info(f"successfully logged in as {bot.user}")
 
-    # Add demo cog
-    await client.add_cog(Demo(client))
-    print("Added demo cog")
 
-@client.event
-async def on_message(message):
-    print(message.content)
-    print('HERE')
-    # Execute command
-    await client.process_commands(message)
+@bot.event
+async def on_message(msg: discord.Message):
+    await bot.process_commands(msg)
 
-if __name__ == "__main__":
+
+initial_exts = ["cogs.demo"]
+
+
+async def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--token", help="specify a Discord bot token")
     parser.add_argument("--debug", help="set the debug loglevel", action="store_true")
@@ -53,6 +51,12 @@ if __name__ == "__main__":
         logging.error("no token specified, use --token or set DISCORD_TOKEN")
         sys.exit(1)
 
-    client.run(token)
+    async with bot:
+        for ext in initial_exts:
+            await bot.load_extension(ext)
+        await bot.start(token)
 
 
+if __name__ == "__main__":
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(main())
