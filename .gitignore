@@ -3,7 +3,7 @@
 *.pyc
 *.log
 
-.mypy_cache
+.mypy_cached
 .venv
 
 .env

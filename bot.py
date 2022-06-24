@@ -3,14 +3,17 @@
 import argparse
 import logging
 import os
+from pydoc import cli
 import sys
 from typing import Optional
+from cogs.demo import Demo
 
 import discord
 import dotenv
+from discord.ext import commands
 
 dotenv.load_dotenv()
-client = discord.Client()
+client = commands.Bot(command_prefix='!')
 
 logging.basicConfig(
     format="%(asctime)s [%(levelname)s]: %(message)s", level=logging.INFO
@@ -21,6 +24,16 @@ logging.basicConfig(
 async def on_ready():
     logging.info(f"successfully logged in as {client.user}")
 
+    # Add demo cog
+    await client.add_cog(Demo(client))
+    print("Added demo cog")
+
+@client.event
+async def on_message(message):
+    print(message.content)
+    print('HERE')
+    # Execute command
+    await client.process_commands(message)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -41,3 +54,5 @@ if __name__ == "__main__":
         sys.exit(1)
 
     client.run(token)
+
+
