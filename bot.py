@@ -30,6 +30,12 @@ async def on_message(msg: discord.Message):
     await bot.process_commands(msg)
 
 
+@bot.event
+async def on_command_error(ctx: commands.Context, error: commands.errors.CommandError):
+    if isinstance(error, (commands.CommandOnCooldown, commands.UserInputError)):
+        await ctx.send(str(error))
+
+
 initial_exts = ["cogs.demo"]
 
 
